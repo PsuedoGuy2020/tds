@@ -14,12 +14,14 @@ app.add_middleware(
 
 # Load the marks from the JSON file
 with open("marks.json", "r") as f:
-    student_marks = json.load(f)
+    student_marks_list = json.load(f)
+    # Convert list to dictionary for faster lookups
+    student_marks = {student["name"]: student["marks"] for student in student_marks_list}
 
 @app.get("/api")
 def get_marks(name: list[str] = Query(...)):
     """
-    Example: /api?name=Alice&name=Bob
+    Example: /api?name=y5RgWANFU&name=v
     """
     results = [student_marks.get(n, None) for n in name]
     return {"marks": results}
