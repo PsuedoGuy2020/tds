@@ -1,0 +1,11 @@
+name: Custom GitHub Action Test
+
+on:
+  workflow_dispatch:  # allows manual trigger
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 21f1003035@ds.study.iitm.ac.in
+        run: echo "Hello, world!"
